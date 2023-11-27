@@ -1,7 +1,6 @@
 //  Mostrar texto dúrate un tiempo determinado
-function show_text(text: string, time: number) {
-    game.showLongText(text, DialogLayout.Bottom)
-    pause(time)
+function show_text(text: string) {
+    game.showLongText(text, DialogLayout.Center)
 }
 
 //  Menú para seleccionar el tipo de conversión
@@ -19,7 +18,7 @@ function get_number(opcio: number): number {
     let text: string;
     if (opcio == 1) {
         text = "Centígrads to convert"
-    } else if (opcio == 1) {
+    } else if (opcio == 2) {
         text = "Fahrenheit to convert"
     } else {
         text = "Don't look at me, this is an error"
@@ -54,18 +53,19 @@ function Calc(opcio: number, val: number): number {
 
 //  Función inicial para inicial el conversor
 forever(function GameCF() {
-    show_text("Convertidor de temperatura entre graus Centígrads i graus Fahrenheit.", 2)
+    show_text("Convertidor de temperatura entre graus Centígrads i graus Fahrenheit.")
     let option = menu()
     if (option == null) {
+        show_text("That's not an option")
         return
     }
     
     let value = get_number(option)
     let asw = Calc(option, value)
     if (option == 1) {
-        show_text("From C° " + value + " Centígrads = " + Math.roundWithPrecision(asw, 2) + " Fahrenheit", 2)
+        show_text("From C° " + value + " Centígrads = " + Math.roundWithPrecision(asw, 2) + " Fahrenheit")
     } else {
-        show_text("From F° " + value + " Fahrenheit = " + Math.roundWithPrecision(asw, 2) + " Centígrads", 2)
+        show_text("From F° " + value + " Fahrenheit = " + Math.roundWithPrecision(asw, 2) + " Centígrads")
     }
     
 })

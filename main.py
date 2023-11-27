@@ -1,7 +1,6 @@
 # Mostrar texto dúrate un tiempo determinado
-def show_text(text: str, time: int):
-    game.show_long_text(text, DialogLayout.BOTTOM)
-    pause(time)
+def show_text(text: str):
+    game.show_long_text(text, DialogLayout.CENTER)
 
 # Menú para seleccionar el tipo de conversión
 def menu(): 
@@ -13,7 +12,7 @@ def menu():
 def get_number(opcio: int):
     if (opcio ==1):
         text = "Centígrads to convert"
-    elif (opcio ==1):
+    elif (opcio ==2):
         text = "Fahrenheit to convert"
     else: 
         text = "Don't look at me, this is an error"
@@ -39,18 +38,18 @@ def Calc(opcio: int, val: int):
 
 # Función inicial para inicial el conversor
 def GameCF():
-    show_text("Convertidor de temperatura entre graus Centígrads i graus Fahrenheit.", 2)
+    show_text("Convertidor de temperatura entre graus Centígrads i graus Fahrenheit.")
     option = menu()
     if (option == None):
+        show_text("That's not an option")
         return
     value = get_number(option)
 
     asw = Calc(option, value)
     if (option ==1):
-        show_text("From C° "+value+" Centígrads = " +Math.round_with_precision(asw, 2)+" Fahrenheit", 2)
+        show_text("From C° "+value+" Centígrads = " +Math.round_with_precision(asw, 2)+" Fahrenheit")
     else:
-        show_text("From F° "+value+" Fahrenheit = " +Math.round_with_precision(asw, 2)+" Centígrads", 2)
-
+        show_text("From F° "+value+" Fahrenheit = " +Math.round_with_precision(asw, 2)+" Centígrads")
 
 forever(GameCF)
 
